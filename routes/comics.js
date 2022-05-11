@@ -27,3 +27,5 @@ router.get("/comics/:id", async (req, res) => {
     res.json({ message: error.message });
   }
 });
+
+module.exports = router;

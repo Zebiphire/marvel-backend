@@ -1,7 +1,7 @@
-const dotenv = require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
 const formidable = require("express-formidable");
+const dotenv = require("dotenv").config();
+const cors = require("cors");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 
