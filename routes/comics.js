@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const IsAuthenticated = require("../middlewares/IsAuthenticated");
-const Comic = require("../models/Comic");
 const axios = require("axios");
 
 // get all the comics
