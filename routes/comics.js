@@ -5,7 +5,7 @@ const Comic = require("../models/Comic");
 const axios = require("axios");
 
 // get all the comics
-router.post("/comics", async (req, res) => {
+router.get("/comics", async (req, res) => {
   try {
     const comics = await axios.get(
       `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.MARVEL_API_KEY}`
