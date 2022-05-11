@@ -18,7 +18,7 @@ const characterRoutes = require("./routes/characters");
 app.use(characterRoutes);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Hello World !" });
+  res.json({ message: "Hello to Marvel API !" });
 });
 
 app.listen(process.env.PORT, () => {
@@ -26,5 +26,5 @@ app.listen(process.env.PORT, () => {
 });
 
 app.all("*", (req, res) => {
-  res.status(404).json("Page introuvable !");
+  res.status(404).json("Page not found !");
 });
