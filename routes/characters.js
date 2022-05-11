@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const IsAuthenticated = require("../middlewares/IsAuthenticated");
+const axios = require("axios");
 const Character = require("../models/Character");
 
 // get all the characters
