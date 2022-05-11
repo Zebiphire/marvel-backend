@@ -12,13 +12,10 @@ app.use(cors());
 require("dotenv").config();
 // mongoose.connect(process.env.MONGODB_URI);
 
-//import des routes
-// const userRoutes = require("./routes/users");
-// app.use(userRoutes);
-// const offerRoutes = require("./routes/offers");
-// app.use(offerRoutes);
-// const paymentRoutes = require("./routes/payment");
-// app.use(paymentRoutes);
+const comicRoutes = require("./routes/comics");
+app.use(comicRoutes);
+const characterRoutes = require("./routes/characters");
+app.use(characterRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello World !" });
