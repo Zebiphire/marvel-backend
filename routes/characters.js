@@ -17,10 +17,10 @@ router.get("/characters", async (req, res) => {
 });
 
 // get specific character
-router.get("/characterId/:characterId", async (req, res) => {
+router.get("/character/:characterId", async (req, res) => {
   try {
     const comic = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characterId/${req.params.characterId}?apiKey=${process.env.MARVEL_API_KEY}`
+      `https://lereacteur-marvel-api.herokuapp.com/character/${req.params.characterId}?apiKey=${process.env.MARVEL_API_KEY}`
     );
     res.json(comic.data);
   } catch (error) {
