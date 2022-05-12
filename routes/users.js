@@ -24,19 +24,20 @@ router.post("/user/signup", async (req, res) => {
       const hash = SHA256(password + salt).toString(encBase64);
       const token = uid2(16);
 
-      // Upload and get picture object
+      // TODO fix cloudinary generic unknow picture for account
 
-      if (req.files.picture.path) {
-        let pictureToUpload = req.files.picture.path;
-        const avatar = await Cloudinary.uploader.upload(pictureToUpload);
-      } else {
-        const avatar = await Cloudinary.uploader.upload(
-          "../assets/img/unknown.jpg"
-        );
-      }
+      // if (req.files.picture?.path === null || undefined) {
+      //   const avatar = await Cloudinary.uploader.upload(
+      //     "../assets/img/unknown.jpg"
+      //   );
+      // } else {
+      //   let pictureToUpload = req.files.picture.path;
+      //   const avatar = await Cloudinary.uploader.upload(pictureToUpload);
+      // }
 
       const newUser = new User({
-        account: { username: username, avatar: avatar },
+        // account: { username: username, avatar: avatar },
+        account: { username: username },
         email: email,
         password: password,
         newsletter: true,
