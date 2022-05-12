@@ -10,8 +10,10 @@ app.use(formidable());
 app.use(morgan("dev"));
 app.use(cors());
 require("dotenv").config();
-// mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 
+const userRoutes = require("./routes/users");
+app.use(userRoutes);
 const comicRoutes = require("./routes/comics");
 app.use(comicRoutes);
 const characterRoutes = require("./routes/characters");

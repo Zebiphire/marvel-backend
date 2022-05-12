@@ -66,7 +66,7 @@ router.post("/user/signup", async (req, res) => {
 });
 
 // Login
-router.post("/user/login", async (req, res) => {
+router.post("/user/signin", async (req, res) => {
   try {
     if (req.fields.password === null || req.fields.email === null) {
       res.status(400).json({ message: "The password/email is/are missing." });
