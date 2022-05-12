@@ -25,8 +25,9 @@ router.post("/user/signup", async (req, res) => {
       const token = uid2(16);
 
       // Upload and get picture object
-      let pictureToUpload = req.files.picture.path;
-      if (pictureToUpload) {
+
+      if (req.files.picture.path) {
+        let pictureToUpload = req.files.picture.path;
         const avatar = await Cloudinary.uploader.upload(pictureToUpload);
       } else {
         const avatar = await Cloudinary.uploader.upload(
