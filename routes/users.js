@@ -7,8 +7,6 @@ const uid2 = require("uid2");
 const User = require("../models/User");
 const Cloudinary = require("../services/CloudinarySettings");
 
-import UnknownIcon from "../assets/img/unknown.jpg";
-
 // Sign up
 router.post("/user/signup", async (req, res) => {
   try {
@@ -31,7 +29,9 @@ router.post("/user/signup", async (req, res) => {
       if (pictureToUpload) {
         const avatar = await Cloudinary.uploader.upload(pictureToUpload);
       } else {
-        const avatar = await Cloudinary.uploader.upload(UnknownIcon);
+        const avatar = await Cloudinary.uploader.upload(
+          "../assets/img/unknown.jpg"
+        );
       }
 
       const newUser = new User({
