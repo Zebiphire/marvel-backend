@@ -6,10 +6,10 @@ const Character = require("../models/Character");
 
 // get all the characters
 router.get("/characters", async (req, res) => {
-  let title = req.query.search ? req.query.search : "";
-  title = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
   try {
+    let title = req.query.search ? req.query.search : "";
+    title = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
     const comics = await axios.get(
       `https://lereacteur-marvel-api.herokuapp.com/characters?name=${title}&apiKey=${process.env.MARVEL_API_KEY}`
     );

@@ -6,8 +6,11 @@ const axios = require("axios");
 // get all the comics
 router.get("/comics", async (req, res) => {
   try {
+    let title = req.query.search ? req.query.search : "";
+    title = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
     const comics = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.MARVEL_API_KEY}`
+      `https://lereacteur-marvel-api.herokuapp.com/comics?title=${title}&apiKey=${process.env.MARVEL_API_KEY}`
     );
     res.json(comics.data);
   } catch (error) {
