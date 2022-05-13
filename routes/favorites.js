@@ -4,10 +4,10 @@ const IsAuthenticated = require("../middlewares/IsAuthenticated");
 const axios = require("axios");
 const Favorite = require("../models/Favorite");
 
-router.get("/favorites", async (req, res) => {
+router.get("/favorites", IsAuthenticated, async (req, res) => {
   try {
     const favorites = await Favorite.find({
-      token: req.fields.token,
+      token: req.user._id,
     });
 
     res.json(favorites.data);
