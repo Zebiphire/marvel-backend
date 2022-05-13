@@ -6,11 +6,13 @@ const Favorite = require("../models/Favorite");
 
 router.get("/favorites", IsAuthenticated, async (req, res) => {
   try {
+    console.log(req);
+
     const favorites = await Favorite.find({
-      token: req.user._id,
+      user: req.user,
     });
 
-    res.json(favorites.data);
+    res.json(favorites);
   } catch (error) {
     res.json({ message: error.message });
   }
