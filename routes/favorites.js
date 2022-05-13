@@ -5,20 +5,21 @@ const axios = require("axios");
 const Favorite = require("../models/Favorite");
 
 router.post("/favorites/save", IsAuthenticated, async (req, res) => {
-  const { id, category } = req.fields;
-  if (isFavoriteExist(id, category, req.user) === false) {
-    try {
-      const newFavorite = new Favorite({
-        id: id,
-        category: category,
-        user: req.user,
-      });
-      await newFavorite.save();
-      res.status(200).json({ success: true });
-    } catch (error) {
-      res.status(400).json({ error: true, message: error.message });
-    }
+  const id = req.fields.id;
+  const category = req.fields.category;
+  // if (isFavoriteExist(id, category, req.user) === false) {
+  try {
+    const newFavorite = new Favorite({
+      id: id,
+      category: category,
+      user: req.user,
+    });
+    await newFavorite.save();
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(400).json({ error: true, message: error.message });
   }
+  // }
 });
 
 router.post("/favorites/remove", IsAuthenticated, async (req, res) => {
