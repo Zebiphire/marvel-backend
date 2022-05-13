@@ -18,6 +18,8 @@ const comicRoutes = require("./routes/comics");
 app.use(comicRoutes);
 const characterRoutes = require("./routes/characters");
 app.use(characterRoutes);
+const favoritesRoutes = require("./routes/favorites");
+app.use(favoritesRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello to Marvel API !" });
