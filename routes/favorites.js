@@ -4,6 +4,18 @@ const IsAuthenticated = require("../middlewares/IsAuthenticated");
 const axios = require("axios");
 const Favorite = require("../models/Favorite");
 
+router.get("/favorites", async (req, res) => {
+  try {
+    const favorites = await Favorite.find({
+      token: req.fields.token,
+    });
+
+    res.json(favorites.data);
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
+
 router.post("/favorites/save", IsAuthenticated, async (req, res) => {
   const id = req.fields.id;
   const category = req.fields.category;
