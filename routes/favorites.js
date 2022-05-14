@@ -35,9 +35,8 @@ router.post("/favorites/save", IsAuthenticated, async (req, res) => {
 });
 
 router.post("/favorites/remove", IsAuthenticated, async (req, res) => {
-  const { id, category } = req.fields;
-
   try {
+    const { id, category } = req.fields;
     const removeFavorite = await Favorite.findOneAndDelete({
       id: id,
       category: category,
@@ -49,8 +48,6 @@ router.post("/favorites/remove", IsAuthenticated, async (req, res) => {
     } else {
       res.json({ success: false, message: "Not found" });
     }
-
-    res.status(200).json({ success: true });
   } catch (error) {
     res.status(400).json({ error: true, message: error.message });
   }
